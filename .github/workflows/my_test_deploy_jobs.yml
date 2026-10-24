@@ -46,7 +46,7 @@
             path: .
       
         - name: Checkout code
-          uses: actions/checkout@v4
+          uses: cd OSTAD-Assignment-module-3
         
         - name: Set up Node.js
           uses: actions/setup-node@v4
@@ -57,5 +57,5 @@
           run: npm install
         
         - name: Deploy to production
-          run: npm run deploy
+          run: npm start
 
