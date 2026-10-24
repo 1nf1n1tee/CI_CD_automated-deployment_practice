@@ -27,9 +27,10 @@
           run: npm run check > test.txt
         
         - name: Upload artifact
-          uses: actions/upload-artifact@v3
+          uses: actions/upload-artifact@v4
           with:
-            name: ./test.txt
+            name: test-results
+            path: test.txt
         
         - name: Print the test results
           run: cat test.txt
@@ -39,9 +40,10 @@
       needs: Test
       steps:
         - name: Download artifact
-          uses: actions/download-artifact@v3
+          uses: actions/download-artifact@v4
           with:
-            name: ./test.txt
+            name: test-results
+            path: .
       
         - name: Checkout code
           uses: actions/checkout@v4
