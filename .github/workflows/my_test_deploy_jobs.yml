@@ -45,7 +45,7 @@
             name: test-results
             path: .
         - name: locate to directory
-          run: cd CI_CD_automated-deployment_practice/
+          run: cd CI_CD_automated-deployment_practice
         
         - name: Stop existing application
           run: pm2 delete node-app || true
