@@ -54,7 +54,7 @@
           run: pm2 delete node-app || true
 
         - name: git pull
-          run: git pull origin main
+          run: git pull
         
         - name: install dependencies
           run: |
