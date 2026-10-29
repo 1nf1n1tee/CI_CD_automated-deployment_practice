@@ -45,24 +45,16 @@
             name: test-results
             path: .
         
-        - name: locate to directory
+        - name: Deploy application
           run: |
-            cd ~
-            cd CI_CD_automated-deployment_practice
-        
-        - name: Stop existing application
-          run: pm2 delete node-app || true
+            cd "$HOME/CI_CD_automated-deployment_practice"
 
-        - name: git pull
-          run: git pull
-        
-        - name: install dependencies
-          run: |
+            pm2 delete node-app || true
+
+            git pull
+
             npm install
-            sudo apt update
-        
-        - name: Start the application
-          run: pm2 start "./src/server.js" --name node-app
-        
-        - name: Save process list
-          run: pm2 save
+
+            pm2 start "./src/server.js" --name node-app
+
+            pm2 save
