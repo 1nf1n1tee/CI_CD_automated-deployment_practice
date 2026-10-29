@@ -44,18 +44,20 @@
           with:
             name: test-results
             path: .
-      
-        - name: Checkout code
-          uses: cd OSTAD-Assignment-module-3
+        - name: locate to directory
+          run: cd CI_CD_automated-deployment_practice/
         
-        - name: Set up Node.js
-          uses: actions/setup-node@v4
-          with:
-              node-version: '24'
+        - name: Stop existing application
+          run: pm2 delete node-app || true
+
+        - name: git pull
+          run: git pull origin main
         
-        - name: Install dependencies
+        - name: install dependencies
           run: npm install
         
-        - name: Deploy to production
-          run: npm start
-
+        - name: Start the application
+          run: pm2 start "./src/server.js" --name node-app
+        
+        - name: Save process list
+          run: pm2 save
