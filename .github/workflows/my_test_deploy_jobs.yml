@@ -35,26 +35,26 @@
         - name: Print the test results
           run: cat test.txt
     
-    Deploy:
-      runs-on: self-hosted
-      needs: Test
-      steps:
-        - name: Download artifact
-          uses: actions/download-artifact@v4
-          with:
-            name: test-results
-            path: .
+    # Deploy:
+    #   runs-on: self-hosted
+    #   needs: Test
+    #   steps:
+    #     - name: Download artifact
+    #       uses: actions/download-artifact@v4
+    #       with:
+    #         name: test-results
+    #         path: .
         
-        - name: Deploy application
-          run: |
-            cd "$HOME/CI_CD_automated-deployment_practice"
+    #     - name: Deploy application
+    #       run: |
+    #         cd "$HOME/CI_CD_automated-deployment_practice"
 
-            pm2 delete node-app || true
+    #         pm2 delete node-app || true
 
-            git pull
+    #         git pull
 
-            npm install
+    #         npm install
 
-            pm2 start "./src/server.js" --name node-app
+    #         pm2 start "./src/server.js" --name node-app
 
-            pm2 save
+    #         pm2 save
